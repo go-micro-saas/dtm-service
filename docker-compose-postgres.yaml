@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  my-dtm:
+    image: yedf/dtm:1.18
+    container_name: my-dtm
+    environment:
+      TZ: Asia/Shanghai
+      LOG_LEVEL: info
+      STORE_DRIVER: postgres
+      STORE_HOST: my-postgres
+      STORE_PORT: 5432
+      STORE_USER: postgres
+      STORE_PASSWORD: Postgres.123456
+      STORE_DB: postgres
+      # STORE_SCHEMA default public
+      STORE_SCHEMA: dtm
+    ports:
+      - '36789:36789'
+      - '36790:36790'
+    volumes:
+      - my_dtm_data:/app/dtm
+    restart: unless-stopped
+    networks:
+      - my-network  # 使用已有的网络
+    healthcheck:
+      test: [ "CMD", "nc", "-zv", "localhost", "36789" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  my_dtm_data:
+    driver: local  # 使用本地驱动器
+
+networks:
+  my-network: # 已有的网络的名称
+    external: true  # 标记为外部网络，表示这是已存在的网络
