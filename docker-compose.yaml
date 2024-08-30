@@ -22,7 +22,7 @@ services:
       # MicroService: consul会检查endpoint可用性
       MICRO_SERVICE_DRIVER: dtm-driver-kratos
       MICRO_SERVICE_TARGET: consul://my-consul:8500/dtm-service
-      MICRO_SERVICE_END_POINT: grpc://my-dtm:36790
+      MICRO_SERVICE_END_POINT: http://my-dtm:36789,grpc://my-dtm:36790
     ports:
       - '36789:36789'
       - '36790:36790'
