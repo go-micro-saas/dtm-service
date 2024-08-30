@@ -68,5 +68,6 @@ docker-compose -p my-project down
 docker volume rm my-project_my_dtm_data
 
 curl --request PUT http://my-consul-hostname:8500/v1/agent/service/deregister/dtmservice
+curl --request PUT http://my-consul-hostname:8500/v1/agent/service/deregister/dtm-service
 
 ```
