@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS dtm.trans_global;
 CREATE SEQUENCE IF NOT EXISTS dtm.trans_global_seq;
 CREATE TABLE IF NOT EXISTS dtm.trans_global
 (
-    id                 bigint        NOT NULL      DEFAULT NEXTVAL('trans_global_seq'),
+    id                 bigint        NOT NULL      DEFAULT NEXTVAL('dtm.trans_global_seq'),
     gid                varchar(128)  NOT NULL,
     trans_type         varchar(45)   NOT NULL,
     status             varchar(45)   NOT NULL,
@@ -32,7 +32,7 @@ DROP TABLE IF EXISTS dtm.trans_branch_op;
 CREATE SEQUENCE IF NOT EXISTS dtm.trans_branch_op_seq;
 CREATE TABLE IF NOT EXISTS dtm.trans_branch_op
 (
-    id            bigint        NOT NULL      DEFAULT NEXTVAL('trans_branch_op_seq'),
+    id            bigint        NOT NULL      DEFAULT NEXTVAL('dtm.trans_branch_op_seq'),
     gid           varchar(128)  NOT NULL,
     url           varchar(1024) NOT NULL,
     data          TEXT,
@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS dtm.kv;
 CREATE SEQUENCE IF NOT EXISTS dtm.kv_seq;
 CREATE TABLE IF NOT EXISTS dtm.kv
 (
-    id          bigint       NOT NULL       DEFAULT NEXTVAL('kv_seq'),
+    id          bigint       NOT NULL       DEFAULT NEXTVAL('dtm.kv_seq'),
     cat         varchar(45)  NOT NULL,
     k           varchar(128) NOT NULL,
     v           TEXT,

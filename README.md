@@ -13,6 +13,21 @@
 * 订单场景： https://github.com/dtm-labs/dtm-cases/blob/main/order/README-cn.md
 * 秒杀场景： https://github.com/dtm-labs/dtm-cases/blob/main/flash/README-cn.md
 
+## 导入数据库
+
+**postgres**
+
+```shell
+
+PGPASSWORD=Postgres.123456 psql -h my-postgres-hostname -p 5432 -U postgres \
+    -f $GOPATH/src/github.com/go-micro-saas/dtm-service/sqls/busi.postgres.sql
+PGPASSWORD=Postgres.123456 psql -h my-postgres-hostname -p 5432 -U postgres \
+    -f $GOPATH/src/github.com/go-micro-saas/dtm-service/sqls/dtmcli.barrier.postgres.sql
+PGPASSWORD=Postgres.123456 psql -h my-postgres-hostname -p 5432 -U postgres \
+    -f $GOPATH/src/github.com/go-micro-saas/dtm-service/sqls/dtmsvr.storage.postgres.sql
+
+```
+
 ## 快速开始
 
 ```shell
@@ -33,21 +48,6 @@ docker run --name dtm -p 36789:36789 -p 36790:36790 \
     -e STORE_DRIVER=postgres -e STORE_HOST=my-postgres -e STORE_PORT=5432 \
     -e STORE_USER=postgres -e STORE_PASSWORD=Postgres.123456 \
     yedf/dtm:1.18
-```
-
-## 导入数据库
-
-**postgres**
-
-```shell
-
-PGPASSWORD=Postgres.123456 psql -h my-postgres-hostname -p 5432 -U postgres \
-    -f $GOPATH/src/github.com/go-micro-saas/dtm-service/sqls/busi.postgres.sql
-PGPASSWORD=Postgres.123456 psql -h my-postgres-hostname -p 5432 -U postgres \
-    -f $GOPATH/src/github.com/go-micro-saas/dtm-service/sqls/dtmcli.barrier.postgres.sql
-PGPASSWORD=Postgres.123456 psql -h my-postgres-hostname -p 5432 -U postgres \
-    -f $GOPATH/src/github.com/go-micro-saas/dtm-service/sqls/dtmsvr.storage.postgres.sql
-
 ```
 
 ## docker-compose
